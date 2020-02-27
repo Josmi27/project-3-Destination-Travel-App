@@ -40,7 +40,7 @@ export class Chat extends React.Component {
         // let usrmessage = this.state.message;
         // let usrnme = this.state.username;
         Socket.emit('new message',  {
-            'Username': this.state.username,
+            //'Username': this.state.username,
             'Message': this.state.message
         });
         console.log('Sent a messages to server!');
