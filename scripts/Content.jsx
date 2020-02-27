@@ -47,6 +47,7 @@ export class Content extends React.Component {
                 
                     <div className="container">
                         <h4 className="chat_title"> Welcome to the Relaxation Chat Room! </h4>
+                        <h5 className="bot_commands"> To hear from bot: !!help </h5>
                         <div className="chat-page">
                     
                         <div className="msg-inbox">
