@@ -13,9 +13,10 @@ This project gave me ALOT of problems:
 5.  I encountered some problemss importing files, which caused almost nothing to work. I ended up having to change file names, and for some reason that worked fine.
 
 
+
 ## Problems
 
-Currently, the user name does not show with the message. Also the user count does not work.At one point I had a count showing, but it was the wrong number, so I decided to remove that piece of code.
+Currently, the user name does not show with the message. Also the user count does not work.At one point I had a count showing, but it was the wrong number, so I decided to remove that piece of code. Also, after a user sends a message, the text they send remains in the box.
 
 
 ## Improvements
