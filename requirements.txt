@@ -1,4 +1,4 @@
 Flask
-flask_sqlalchemy
+Flask-SQLAlchemy==2.1
 flask_socketio
 psycopg2
