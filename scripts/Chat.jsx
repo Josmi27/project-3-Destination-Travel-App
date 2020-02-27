@@ -19,14 +19,12 @@ export class Chat extends React.Component {
     
     handleUsernameChange(event){
         this.setState({username: event.target.value});
-        console.log('user_name', event.target.value);
-        //document.getElementById().value = "";
+        document.getElementById().value = "";
     }
     
     handleMessageChange(event){
         this.setState({message: event.target.value});
-        console.log('user_message', event.target.value);
-       // document.getElementById().value = "";
+        document.getElementById().value = "";
     }
     
     handleChange(event){
@@ -37,10 +35,10 @@ export class Chat extends React.Component {
     
     handleSubmit(event) {
         event.preventDefault();
-        // let usrmessage = this.state.message;
-        // let usrnme = this.state.username;
+        let usermessage = this.state.message;
+        let usernme = this.state.username;
         Socket.emit('new message',  {
-            //'Username': this.state.username,
+            'Username': this.state.username,
             'Message': this.state.message
         });
         console.log('Sent a messages to server!');
