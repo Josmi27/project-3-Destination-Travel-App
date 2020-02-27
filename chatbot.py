@@ -12,9 +12,9 @@ class Chatbot():
         if message == '!! help':
             response = 'Want me to say more? I respond to: !! about, !! say<something>, !! quotes, and !! imagine'
         elif message == '!! about':
-            response = 'Welcome to the Relaxattion Chatroom! Here you will be able to escape from the stresses of your life and relaaaaaaax :)' 
-        elif message == '!! say <something>':
-            response = message[7:]
+            response = 'Welcome to the Relaxation Chatroom! Here you will be able to escape from the stresses of your life and relaaaaaaax :)' 
+        elif message == '!! say hello':
+            response = "Hello. Thanks for joining the Relaxation chat room!"
         elif message == '!! quotes':
             chatbot_quotes=[" Difficult roads often lead to beautiful destinations", "I promise you nothing is as chaotic as it seems", "Act the way that you want to feel.", "Tension is who you think you should be. Relaxation is who you are."]
             response = chatbot_quotes[random.randint(0,len(chatbot_quotes))]
