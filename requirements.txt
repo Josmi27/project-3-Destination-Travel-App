@@ -2,3 +2,4 @@ Flask
 Flask-SQLAlchemy==2.1
 flask_socketio
 psycopg2
+requests
