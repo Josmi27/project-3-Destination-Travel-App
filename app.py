@@ -61,11 +61,11 @@ def handleMessage(data):
         called_class = chatbot.Chatbot()
         final_response = called_class.response(current_message)
         new_message = models.Message(final_response)
-        models.db.session.add(new_message)
+        models.db.session.add(new_message) 
         models.db.session.commit()
    
     elif is_url(current_message) is True:
-        hyperlink_format = '<a href="{link}">{text}</a>' #doesn't work 
+        hyperlink_format = '<a href="{link}">{text}</a>' #doesn't work now
         hyperlink_format.format(link=current_message, text ='foo bar')
         link_text = hyperlink_format.format
         message_now = models.Message(link_text)
