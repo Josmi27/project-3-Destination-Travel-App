@@ -10,7 +10,7 @@ export class Content extends React.Component {
         super(props);
         this.state = {
             'username' :[],
-            'username_array' :[],
+            // 'username_array' :[],
             'messages': [], 
             'message_array': []
         };
@@ -28,7 +28,7 @@ export class Content extends React.Component {
     
         Socket.on('message array', (data) => {
             this.setState({
-                'username_array': data['data'],
+                // 'username_array': data['data'],
                 'message_array': data['data']
             });
         });

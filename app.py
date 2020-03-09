@@ -24,13 +24,13 @@ def on_connect():
     array = []
     for m in messages:
         array.append(
-            [m.user, m.text]
+            [m.text]
         )
     print('Someone connected!')
     
     socketio.emit('message array',{
      'data': array
-    }, broaadcast=True)
+    }, broadcast=True)
     
 
 
@@ -60,21 +60,21 @@ def handleMessage(data):
     if current_message[:2] == '!!':
         called_class = chatbot.Chatbot()
         final_response = called_class.response(current_message)
-        new_message = models.Message('bot',final_response)
+        new_message = models.Message(final_response)
         models.db.session.add(new_message)
         models.db.session.commit()
    
     elif is_url(current_message) is True:
-        hyperlink_format = '<a href="{link}">{text}</a>'
+        hyperlink_format = '<a href="{link}">{text}</a>' #doesn't work 
         hyperlink_format.format(link=current_message, text ='foo bar')
         link_text = hyperlink_format.format
-        message_now = models.Message('user', link_text)
+        message_now = models.Message(link_text)
         models.db.session.add(message_now)
         models.db.session.commit()
         
     else:
-        # info = models.Message(data['Message'])
-        models.db.session.add('user',current_message)
+        info = models.Message(data['Message'])
+        models.db.session.add(info)
         models.db.session.commit()
     return on_connect()
 
