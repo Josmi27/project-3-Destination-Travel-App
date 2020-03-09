@@ -10,6 +10,7 @@ export class Content extends React.Component {
         super(props);
         this.state = {
             'username' :[],
+            'username_array' :[],
             'messages': [], 
             'message_array': []
         };
@@ -18,7 +19,7 @@ export class Content extends React.Component {
     componentDidMount() {
         Socket.on('message received', (data) => {
             this.setState({
-                'username_present': data['Username'],
+                'username_present': data['Message'],
                 'message_received': data['Message']
             });
         
@@ -27,6 +28,7 @@ export class Content extends React.Component {
     
         Socket.on('message array', (data) => {
             this.setState({
+                'username_array': data['data'],
                 'message_array': data['data']
             });
         });
@@ -40,6 +42,7 @@ export class Content extends React.Component {
         const listItems = this.state.message_array.map((a, index) =>
             <p className="number-item chatbubble" key={index}>{a}</p>
         );
+    
         
         return (
             <html>
@@ -57,7 +60,7 @@ export class Content extends React.Component {
                                 <div className="received-msg">
                                 <div className="received-msg-inbox">
                                 {listItems}
-                                        
+
                                 </div>
                                 </div>
                                 </div>

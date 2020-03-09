@@ -3,7 +3,9 @@ import flask, flask_socketio, flask_sqlalchemy
 import psycopg2
 import chatbot
 
+import functools
 
+from urllib.parse import urlparse
 app = flask.Flask(__name__)
 socketio = flask_socketio.SocketIO(app)
 
@@ -22,7 +24,7 @@ def on_connect():
     array = []
     for m in messages:
         array.append(
-            [m.text]
+            [m.user, m.text]
         )
     print('Someone connected!')
     
@@ -42,21 +44,37 @@ def on_disconnect():
     
 @socketio.on('new message')
 def handleMessage(data):
-    u_message = data['Message']
-    u2_message = models.Message(data['Message'])
+    # u_message = data['Message']
+    # u2_message = models.Message(data['User','Message'])
     
     current_message = data['Message']
-
+    
+    def is_url(url):
+        try:
+            result = urlparse(url)
+            return all([result.scheme, result.netloc])
+        except ValueError:
+            return False
+            
+            
     if current_message[:2] == '!!':
         called_class = chatbot.Chatbot()
         final_response = called_class.response(current_message)
-        new_message = models.Message(final_response)
+        new_message = models.Message('bot',final_response)
         models.db.session.add(new_message)
         models.db.session.commit()
    
+    elif is_url(current_message) is True:
+        hyperlink_format = '<a href="{link}">{text}</a>'
+        hyperlink_format.format(link=current_message, text ='foo bar')
+        link_text = hyperlink_format.format
+        message_now = models.Message('user', link_text)
+        models.db.session.add(message_now)
+        models.db.session.commit()
+        
     else:
-        info = models.Message(data['Message'])
-        models.db.session.add(info)
+        # info = models.Message(data['Message'])
+        models.db.session.add('user',current_message)
         models.db.session.commit()
     return on_connect()
 
