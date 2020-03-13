@@ -1,0 +1,19 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6.1
+
+    working_directory: ~/project2-cp3-mowhi3
+
+    steps:
+      - checkout
+
+      - run:
+          name: run tests
+          command: |
+            python -m tests.unit_tests
+      #- run:
+          #name: deploy to heroku
+          #command: |
+          #  git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
