@@ -1,6 +1,6 @@
 import os
-import flask
-import flask_socketio
+# import flask
+# import flask_socketio
 import models, random
 import app
 import jokeapi
