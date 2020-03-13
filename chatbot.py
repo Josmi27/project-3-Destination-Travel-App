@@ -27,5 +27,5 @@ class Chatbot():
         elif command == 'joke':
             response = jokeapi.rand_joke
         else:
-            chatbot_message = "I'm sorry, I don't understand what you're saying. Try '!!help for commands I understand.'"
+            response = "I'm sorry, I don't understand what you're saying. Try '!!help for commands I understand.'"
         return response
