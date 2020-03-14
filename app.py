@@ -15,8 +15,6 @@ import models
 def hello():
  
     return flask.render_template('index.html')
-    
-  
 
 @socketio.on('connect') 
 def on_connect():
