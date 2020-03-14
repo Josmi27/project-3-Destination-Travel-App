@@ -14,11 +14,11 @@ jobs:
           command: |
             sudo pip install -r requirements.txt
             python -m tests.unit_tests
-      - run:      
-          name: run integration
-          command: |
-            sudo pip install -r requirements.txt
-            python -m tests.integration_tests
+      # - run:      
+      #     name: run integration
+      #     command: |
+      #       sudo pip install -r requirements.txt
+      #       python -m tests.integration_tests
           
           
       - run:
