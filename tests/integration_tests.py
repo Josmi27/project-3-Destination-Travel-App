@@ -1,5 +1,4 @@
 import app, unittest, requests, flask_testing
-from flask_testing import LiveServerTestCase
 
 class ServerIntegrationTestCase(
     flask_testing.LiveServerTestCase

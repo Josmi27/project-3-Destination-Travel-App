@@ -14,9 +14,9 @@ jobs:
           command: |
             sudo pip install -r requirements.txt
             python -m tests.unit_tests
-      #- run:
-          #name: deploy to heroku
-          #command: |
-          #  git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master'
+      - run:
+          name: deploy to heroku
+          command: |
+            git push https://heroku:$e07f70f1-87a1-4fdb-9c15-e27654818bc0@git.heroku.com/$frozen.crag41604.git master'
           
           
