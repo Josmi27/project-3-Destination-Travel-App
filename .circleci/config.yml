@@ -17,6 +17,6 @@ jobs:
       - run:
           name: deploy to heroku
           command: |
-            git push https://heroku:$e07f70f1-87a1-4fdb-9c15-e27654818bc0@git.heroku.com/$frozen.crag41604.git master'
+            git push https://heroku:$e07f70f1-87a1-4fdb-9c15-e27654818bc0@git.heroku.com/$frozen-crag-41604.git master'
           
           
