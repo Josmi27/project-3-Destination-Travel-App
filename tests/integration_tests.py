@@ -5,7 +5,6 @@ class ServerIntegrationTestCase(
     flask_testing.LiveServerTestCase
 ):
         
-        
     def create_app(self):
         pass
         return app.app
