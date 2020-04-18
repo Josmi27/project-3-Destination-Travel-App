@@ -69,7 +69,7 @@ def jamaica_airport():
     response = requests.request("GET", url, headers=headers, params=querystring)
     json_body = response.json()
     jamaica_airport = json.dumps(json_body[0]["code"])
-    airport = "The airport located in Kingston, Jamaica can be found under airport code", jamaica_airport
+    airport = ("The airport located in Kingston, Jamaica can be found under airport code " + jamaica_airport)
     return(airport)
 
 def pr_airport():
@@ -85,7 +85,7 @@ def pr_airport():
     response = requests.request("GET", url, headers=headers, params=querystring)
     json_body = response.json()
     p_airport = json.dumps(json_body[0]["code"])
-    airport = "The airport located in San Juan, Puerto Rico can be found under airport code", p_airport
+    airport = ("The airport located in San Juan, Puerto Rico can be found under airport code "+ p_airport)
     
     new_message = models.Currency(p_airport)
     models.db.session.add(new_message) 
@@ -106,7 +106,7 @@ def currency_conversion():
     response = requests.request("GET", currency_url, headers=headers, params=querystring)
     json_body = response.json()
     conversion = json.dumps(json_body["rates"]["JMD"]["rate"], indent=2)
-    jamaica_conversion = "The currency conversion from the US dollar to the Jamaican Dollar is: $", conversion
+    jamaica_conversion = ("The currency conversion from the US dollar to the Jamaican Dollar is: $"+ conversion)
     return(jamaica_conversion)
 
 def outdoor_activity():
