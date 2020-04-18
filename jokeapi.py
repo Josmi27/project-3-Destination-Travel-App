@@ -113,6 +113,18 @@ def outdoor_activity():
     outdoor_response = "In Puerto Rico, you should check out the activity called: " + activity
     return(outdoor_response)
 
+def travel_advice():
+    url = "https://www.reisewarnung.net/api?country=PR"
+    Response = requests.get(url)
+    json_body = Response.json()
+    country_code = json_body["data"]["code"]["country"]
+    danger_rating = json_body["data"]["situation"]["rating"]
+    advice = json_body["data"]["lang"]["en"]["advice"]
+    if country_code:
+        response = "For country code {}, since the travel danger rating is {}/5.0, {}".format(country_code, danger_rating, advice)
+    else:
+        response = "No data found for specified country code. Please try country code PR."
+    return(response)
 
 # THIS IS A BLUEPRINT FOR JOSHUA SMITH'S SECOND API
 

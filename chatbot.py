@@ -54,6 +54,7 @@ from jokeapi import flight_api_cost
 from jokeapi import currency_conversion
 from jokeapi import outdoor_activity
 from jokeapi import translate
+from jokeapi import travel_advice
 
 
 class Chatbot():
@@ -70,7 +71,7 @@ class Chatbot():
         elif message == '!! say something':
             response = "Hello, I'm a travel bot! For more help, try typing !! help"
         elif message == '!! music':
-            response = "Please select one of the following: !! Jamaican-Music, !! PR-Music, !! translate"
+            response = "Please select one of the following: !! Jamaican-Music, !! PR-Music, !! translate, !! travel advice"
         elif message == "!! about":
             response = "The purpose of this chatbot is inform you of random fun facts regarding specific travel locations!"
         elif message == '!! Jamaica':
@@ -97,6 +98,8 @@ class Chatbot():
             response = outdoor_activity()
         elif message == '!! translate':
             response = translate()
+        elif message == '!! travel advice':
+            response = travel_advice()
         # elif message == '!! advice for country code: {}'.format(message[28:]):
         #     country_code =  "{}".format(message[28:])
         #     travel_warning_search = "https://www.reisewarnung.net/api?country={}".format(country_code)
