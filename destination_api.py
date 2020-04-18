@@ -1,6 +1,7 @@
 import requests
 import random
 import json
+import models
 
 #WEATHERBIT API
 def current_temperature():
@@ -74,7 +75,7 @@ def jamaica_airport():
 def pr_airport():
     url = "https://cometari-airportsfinder-v1.p.rapidapi.com/api/airports/by-text"
 
-    querystring = {"text":"San Juan"}
+    querystring = {"text":"Ponce"}
 
     headers = {
         'x-rapidapi-host': "cometari-airportsfinder-v1.p.rapidapi.com",
@@ -84,8 +85,13 @@ def pr_airport():
     response = requests.request("GET", url, headers=headers, params=querystring)
     json_body = response.json()
     p_airport = json.dumps(json_body[0]["code"])
-    p_airport = "The airport located in San Juan, Puerto Rico can be found under airport code", pr_airport
-    return(p_airport)
+    airport = "The airport located in San Juan, Puerto Rico can be found under airport code", p_airport
+    
+    new_message = models.Currency(p_airport)
+    models.db.session.add(new_message) 
+    models.db.session.commit()
+    
+    return(airport)
 
 
 #JAMAICA CURRENCY CONVERSION
