@@ -1,60 +1,18 @@
-# import os
-# import flask
-# import flask_socketio
-# import models, random
-# import app
-# import jokeapi
-
-# scenes = ['Imagine you are on a beautiful island, away from your problems', 'Imagine you are in your bed, sleeping your troubles away', 'Imagine you are in the library reading your favorite book']
-
-
-# rand_scene = random.randint(0, len(scenes)-1)
-
-# class Chatbot():
-#     def __init__(self):
-#         return 
-#     def response(self, message):
-#         bangs, command, args = message.split(' ', 2)
-        
-#         if command == 'help':
-#             response = 'Want me to say more? I respond to: !! about, !! say <something>, !! quotes, !! joke, !! island, !! tips, !! meditation and !! imagine'
-#         elif command == 'tips':
-#             response = 'Want to know how to relax after a stressful day?: take a shower, prepare you favorite meal, do not think about any of your troubles!'
-#         elif command  == 'about':
-#             response = 'Welcome to the Relaxation Chatroom! Here you will be able to escape from the stresses of your life and relaaaaaaax :)' 
-#         elif command == 'say':
-#             response = args
-#         elif command == 'quotes':
-#             chatbot_quotes=[" Difficult roads often lead to beautiful destinations", "I promise you nothing is as chaotic as it seems", "Act the way that you want to feel.", "Tension is who you think you should be. Relaxation is who you are."]
-#             response = chatbot_quotes[random.randint(0,len(chatbot_quotes)-1)]
-#         elif command == 'imagine':
-#             response = scenes[rand_scene]
-#         elif command == 'meditation':
-#             response = "For more help relaxing, I would recommend downlaoding the Calm application on your phone."
-#         elif command == 'joke':
-#             response = jokeapi.rand_joke
-#         elif command == "island":
-#             response = "For extra relaxation, considering visiting an island in the Caribbean, like the Bahamas!"
-#         else:
-#             response = "I'm sorry, I don't understand what you're saying. Try '!!help for commands I understand.'"
-#         return response
-
-
 import os
 import flask
 import flask_socketio
 import app
-import jokeapi
+import destination_api
 import requests
-from jokeapi import current_temperature
-from jokeapi import current_timezone
-from jokeapi import music_from_jamaica
-from jokeapi import music_from_pr
-from jokeapi import flight_api_cost
-from jokeapi import currency_conversion
-from jokeapi import outdoor_activity
-from jokeapi import translate
-from jokeapi import travel_advice
+from destination_api import current_temperature
+from destination_api import current_timezone
+from destination_api import music_from_jamaica
+from destination_api import music_from_pr
+from destination_api import flight_api_cost
+from destination_api import currency_conversion
+from destination_api import outdoor_activity
+from destination_api import translate
+from destination_api import travel_advice
 
 
 class Chatbot():
@@ -94,32 +52,11 @@ class Chatbot():
             response = flight_api_cost()
         elif message == '!! currency':
             response = currency_conversion()
-        elif message == '!! activities':
+        elif message == '!! PR-Activity':
             response = outdoor_activity()
         elif message == '!! translate':
             response = translate()
-        elif message == '!! travel advice':
+        elif message == '!! PR-Travel':
             response = travel_advice()
-        # elif message == '!! advice for country code: {}'.format(message[28:]):
-        #     country_code =  "{}".format(message[28:])
-        #     travel_warning_search = "https://www.reisewarnung.net/api?country={}".format(country_code)
-        #     response = requests.get(travel_warning_search)
-        #     json_body = response.json()
-        #     danger_rating = json_body["data"]["situation"]["rating"]
-        #     advice = json_body["data"]["lang"]["en"]["advice"]
-        #     response = "Since the travel danger rating is {}/5, {}".format(danger_rating, advice)
-        # elif message == "!! outdoor activities in Jamaica":
-        #     url = "https://trailapi-trailapi.p.rapidapi.com/"
-        #     querystring = {"q-country_cont":"{}".format(message[25:])}
-        #     headers = {
-        #         'x-rapidapi-host': "trailapi-trailapi.p.rapidapi.com",
-        #         'x-rapidapi-key': "2bc8488dedmsh09812c800fb6b89p19fb19jsn6987dc57cdda"
-        #         }
-        #     response = requests.request("GET", url, headers=headers, params=querystring)
-        #     json_body = response.json()
-        #     activity = json_body["places"][0]["name"]
-        #     activities_response = "You should check out the activity called: {}".format(activity)
-        #     return(activities_response)
-            # else:
-            #     chatbot_message = "I'm not sure what you mean. Try '!! help'"
+
         return response

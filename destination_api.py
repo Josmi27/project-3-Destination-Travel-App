@@ -1,22 +1,3 @@
-# import requests
-# import json
-
-
-# import requests
-
-# url = "https://joke3.p.rapidapi.com/v1/joke"
-
-# headers = {
-#     'x-rapidapi-host': "joke3.p.rapidapi.com",
-#     'x-rapidapi-key': "e9030cc69cmsh46998fa37a68441p18e133jsne5b9847bff25"
-#     }
-
-# response = requests.request("GET", url, headers=headers)
-
-# json_body = response.json()
-# rand_joke = json.dumps(json_body["content"], indent=2)
-
-
 import requests
 import random
 import json
@@ -125,22 +106,3 @@ def travel_advice():
     else:
         response = "No data found for specified country code. Please try country code PR."
     return(response)
-
-# THIS IS A BLUEPRINT FOR JOSHUA SMITH'S SECOND API
-
-    # def travel_advice():
-    #     url = "https://www.reisewarnung.net/api?country={PR}"
-    #     response = requests.get(url)
-    #     json_body = response.json()
-    #     danger_rating = json_body["data"]["situation"]["rating"]
-    #     advice = json_body["data"]["lang"]["en"]["advice"]
-    #     advice_response = "Since the travel danger rating is {}/5, {}".format(danger_rating, advice)
-    #     return(advice_response)
-
-
-
-
-#
-
-
-
