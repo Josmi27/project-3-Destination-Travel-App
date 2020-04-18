@@ -54,19 +54,39 @@ def translate():
     translated_sentence = (reverse_translation + " translated into Spanish is: "+ original_translation)
     return(translated_sentence)
 
-#Flight API, daily limit of 10
-def flight_api_cost(): 
-    url = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/BWI-sky/MBJ-sky/2020-07-05"
-    querystring = {"inboundpartialdate":"2019-12-01"}
+#Airport API
+def jamaica_airport(): 
+    url = "https://cometari-airportsfinder-v1.p.rapidapi.com/api/airports/by-text"
+
+    querystring = {"text":"Kingston"}
+
     headers = {
-        'x-rapidapi-host': "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
-        'x-rapidapi-key': "8258d9474bmshc76a1b383e354d4p11989bjsn988778d9991f"
+        'x-rapidapi-host': "cometari-airportsfinder-v1.p.rapidapi.com",
+        'x-rapidapi-key': "e9030cc69cmsh46998fa37a68441p18e133jsne5b9847bff25"
         }
+
     response = requests.request("GET", url, headers=headers, params=querystring)
     json_body = response.json()
-    min_price_flight = json.dumps(json_body, indent=2)
-    price = "This is the lowest price for flights to Jamaica for the month of July $", min_price_flight
-    return(price)
+    jamaica_airport = json.dumps(json_body[0]["code"])
+    airport = "The airport located in Kingston, Jamaica can be found under airport code", jamaica_airport
+    return(airport)
+
+def pr_airport():
+    url = "https://cometari-airportsfinder-v1.p.rapidapi.com/api/airports/by-text"
+
+    querystring = {"text":"San Juan"}
+
+    headers = {
+        'x-rapidapi-host': "cometari-airportsfinder-v1.p.rapidapi.com",
+        'x-rapidapi-key': "e9030cc69cmsh46998fa37a68441p18e133jsne5b9847bff25"
+        }
+
+    response = requests.request("GET", url, headers=headers, params=querystring)
+    json_body = response.json()
+    p_airport = json.dumps(json_body[0]["code"])
+    p_airport = "The airport located in San Juan, Puerto Rico can be found under airport code", pr_airport
+    return(p_airport)
+
 
 #JAMAICA CURRENCY CONVERSION
 
@@ -82,7 +102,6 @@ def currency_conversion():
     conversion = json.dumps(json_body["rates"]["JMD"]["rate"], indent=2)
     jamaica_conversion = "The currency conversion from the US dollar to the Jamaican Dollar is: $", conversion
     return(jamaica_conversion)
-
 
 def outdoor_activity():
     url = "https://trailapi-trailapi.p.rapidapi.com/"
