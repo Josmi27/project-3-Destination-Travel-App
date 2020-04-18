@@ -30,7 +30,9 @@ class Chatbot():
         elif message == '!! say something':
             response = "Hello, I'm a travel bot! For more help, try typing !! help"
         elif message == '!! music':
-            response = "Please select one of the following: !! Jamaican-Music, !! PR-Music, !! translate, !! travel advice"
+            response = "Please select one of the following: !! Jamaican-Music, !! PR-Music"
+        elif message == '!! new commands':
+            response = "Please select one: !! PR-airport, !! Jamaica-currency, !! PR-currency, !! translate, !! PR-Travel "
         elif message == "!! about":
             response = "The purpose of this chatbot is inform you of random fun facts regarding specific travel locations!"
         elif message == '!! Jamaica':

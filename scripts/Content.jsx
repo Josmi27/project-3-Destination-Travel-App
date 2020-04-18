@@ -50,8 +50,9 @@ export class Content extends React.Component {
                 <div className="rcontainer">
                 
                     <div className="container">
-                        <h4 className="chat_title"> Welcome to the Relaxation Chat Room! </h4>
-                        <h5 className="bot_commands"> To hear from bot: !!help </h5>
+                        <h4 className="chat_title"> Welcome to the Destination Travel Chat App! </h4>
+                        <h5 className="bot_commands"> To hear from bot type: !! help </h5>
+                        <h5 className="new_features"> To view the newest commands added to the bot, type: !! new commands </h5>
                         <div className="chat-page">
                     
                         <div className="msg-inbox">
