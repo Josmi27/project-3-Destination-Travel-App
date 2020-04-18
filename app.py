@@ -61,6 +61,13 @@ def handleMessage(data):
         new_message = models.Message(final_response)
         models.db.session.add(new_message) 
         models.db.session.commit()
+    #joy working with database table
+    elif current_message[:2] == '!! PR-Music':
+        class_call = chatbot.Chatbot()
+        final_response = class_call.response(current_message)
+        new_message = models.Genius(final_response)
+        models.db.session.add(new_message) 
+        models.db.session.commit()
    
     elif is_url(current_message) is True:
         hyperlink_format = '<a href="{link}">{text}</a>' #doesn't work now
@@ -74,6 +81,8 @@ def handleMessage(data):
         info = models.Message(data['Message'])
         models.db.session.add(info)
         models.db.session.commit()
+        
+    
     return on_connect()
 
 if __name__ == '__main__':   

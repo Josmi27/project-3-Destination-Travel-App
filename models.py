@@ -32,3 +32,16 @@ class Currency(db.Model):
         
     def __repr__(self):
         return "{'Currency: %s'}" % (self.currency) 
+        
+class Genius(db.Model):
+    id = db.Column(db.Integer, primary_key=True)  # key
+    # user = db.Column(db.String(250))
+    genius = db.Column(db.String(250))
+        
+    def __init__(self,g):
+        # self.name = u
+        self.genius = g
+        
+        
+    def __repr__(self):
+        return "{'Genius: %s'}" % (self.genius) 
