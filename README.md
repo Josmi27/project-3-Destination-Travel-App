@@ -10,5 +10,5 @@
 <p>Building on the above, we’d like to add styling to the page to make it look more like a travel application. We’d also like to add in the second new API (per person) and more tables for our persistence via a database<br>
 <h5>Latest API's Added</h5>
 <p>My Memory API: provides language translation to improve communication during travel<br>
-<p>Skyscanner Travel API: User can view flight price for selected destination. <br>
+<p>Airport Finder API: User can view airport names for selected destination. <br>
 <p>Travel Warnings API: provides user with travel danger rating and travel advice for selected destination.<br>
