@@ -26,11 +26,11 @@ class Chatbot():
         if message == '!! help':
             response = 'Please select one of the following: !! about, !! Jamaica, !! Puerto Rico, !! Exit, !! Current Weather, !! more help'
         elif message == '!! more help':
-            response = 'Please select one of the following: !! PR-Travel, !! PR-Music, !! PR-Activity, !! flights, !! currency, !! translate'
+            response = 'Please select one of the following: !! PR-Travel, !! PR-Music, !! PR-Activity, !! Jamaica-airports, !! currency, !! translate'
         elif message == '!! say something':
             response = "Hello, I'm a travel bot! For more help, try typing !! help"
         elif message == '!! music':
-            response = "Please select one of the following: !! Jamaican-Music, !! PR-Music, !! Jamaica-currency"
+            response = "Please select one of the following: !! Jamaican-Music, !! PR-Music, !! Jamaica-currency, !! PR-airport"
         elif message == '!! new commands':
             response = "Please select one: !! PR-airport, !! PR-Activity, !! PR-currency, !! translate, !! PR-Travel "
         elif message == "!! about":
