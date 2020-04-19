@@ -45,3 +45,13 @@ class Genius(db.Model):
         
     def __repr__(self):
         return "{'Genius: %s'}" % (self.genius) 
+
+class Activity(db.Model):
+    id = db.Column(db.Integer, primary_key=True)  # key
+    activity = db.Column(db.String(250))
+        
+    def __init__(self,a):
+        self.activity = a
+        
+    def __repr__(self):
+        return "{'Activity: %s'}" % (self.activity) 

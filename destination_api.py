@@ -117,6 +117,11 @@ def outdoor_activity():
     json_body = response.json()
     activity = json_body["places"][3]["name"]
     outdoor_response = "In Puerto Rico, you should check out the activity called: " + activity
+    
+    new_message = models.Activity(activity)
+    models.db.session.add(new_message) 
+    models.db.session.commit()
+    
     return(outdoor_response)
 
 def travel_advice():
