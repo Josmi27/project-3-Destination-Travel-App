@@ -40,6 +40,9 @@ def music_from_pr():
     json_body = response.json()
     song = json_body["response"]["hits"][playlist]["result"]["full_title"]
     pr_song_selection = ("Here you can find a song from/featuring a local Puerto Rican artist. Song:  " + song)
+    new_message = models.Genius(song)
+    models.db.session.add(new_message) 
+    models.db.session.commit()
     return(pr_song_selection)
     
 #My Memory API - text translator 
