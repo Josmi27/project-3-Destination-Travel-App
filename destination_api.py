@@ -73,6 +73,10 @@ def jamaica_airport():
     json_body = response.json()
     jamaica_airport = json.dumps(json_body[0]["code"])
     airport = ("The airport located in Kingston, Jamaica can be found under airport code " + jamaica_airport)
+    
+    new_message = models.Currency(jamaica_airport)
+    models.db.session.add(new_message) 
+    models.db.session.commit()
     return(airport)
 
 def pr_airport():
@@ -139,5 +143,3 @@ def travel_advice():
     else:
         response = "No data found for specified country code. Please try country code PR."
     return(response)
-    
-    
