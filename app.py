@@ -42,9 +42,7 @@ def on_disconnect():
     
 @socketio.on('new message')
 def handleMessage(data):
-    # u_message = data['Message']
-    # u2_message = models.Message(data['User','Message'])
-    
+    username = data['Username']
     current_message = data['Message']
     
     def is_url(url):
@@ -58,14 +56,14 @@ def handleMessage(data):
     if current_message[:2] == '!!':
         called_class = chatbot.Chatbot()
         final_response = called_class.response(current_message)
-        new_message = models.Message(final_response)
+        new_message = models.Message("{}: \n {}".format(username, final_response))
         models.db.session.add(new_message) 
         models.db.session.commit()
     #joy working with database table
     elif current_message[:2] == '!! PR-Music':
         class_call = chatbot.Chatbot()
         final_response = class_call.response(current_message)
-        new_message = models.Genius(final_response)
+        new_message = models.Genius("{}: \n {}".format(username, final_response))
         models.db.session.add(new_message) 
         models.db.session.commit()
    
@@ -78,7 +76,7 @@ def handleMessage(data):
         models.db.session.commit()
         
     else:
-        info = models.Message(data['Message'])
+        info = models.Message("{}: \n {}".format(username, data['Message']))
         models.db.session.add(info)
         models.db.session.commit()
         
