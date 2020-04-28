@@ -54,6 +54,7 @@ def handleMessage(data):
             
             
     if current_message[:2] == '!!':
+        username = "Destination Travel Bot"
         called_class = chatbot.Chatbot()
         final_response = called_class.response(current_message)
         new_message = models.Message("{}: \n {}".format(username, final_response))
@@ -61,6 +62,7 @@ def handleMessage(data):
         models.db.session.commit()
     #joy working with database table
     elif current_message[:2] == '!! PR-Music':
+        username = "Destination Travel Bot"
         class_call = chatbot.Chatbot()
         final_response = class_call.response(current_message)
         new_message = models.Genius("{}: \n {}".format(username, final_response))
