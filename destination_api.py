@@ -116,28 +116,48 @@ def currency_conversion():
     jamaica_conversion = ("The currency conversion from the US dollar to the Jamaican Dollar is: $"+ conversion)
     return(jamaica_conversion)
 
-def outdoor_activity():
+
+def outdoor_activity(country_name):
     url = "https://trailapi-trailapi.p.rapidapi.com/"
     headers = {'x-rapidapi-host': "trailapi-trailapi.p.rapidapi.com",'x-rapidapi-key': "2bc8488dedmsh09812c800fb6b89p19fb19jsn6987dc57cdda"}
-    querystring = {"location_id":"1","limit":"30","sort":"relevance","offset":"0","lang":"en_US","currency":"USD","units":"km","query":"pattaya"}
-    response = requests.request("GET", url, headers=headers, params=querystring)
-    json_body = response.json()
-    activity = json_body["places"][3]["name"]
-    outdoor_response = "In Puerto Rico, you should check out the activity called: " + activity
+    querystring = {"q-activities_activity_type_name_eq":"hiking","radius":"100000","q-country_cont":"Egypt","limit":"25"}
+    resp = requests.request("GET", url, headers=headers, params=querystring)
+    json_body = resp.json()
+   
+    au = json_body["places"][0]["country"]
+    au_activity = json_body["places"][0]["activities"][0]["activity_type_name"]
+    us = json_body["places"][1]["country"]
+    us_activity = json_body["places"][1]["activities"][0]["activity_type_name"]
+    ca = json_body["places"][18]["country"]
+    ca_activity = json_body["places"][18]["name"]
     
-    new_message = models.Activity(activity)
-    models.db.session.add(new_message) 
-    models.db.session.commit()
-    
+    if country_name == au:
+        outdoor_response = "In {}, you should check out the activity- {}".format(country_name, au_activity)
+        new_message = models.Activity(au_activity)
+        models.db.session.add(new_message) 
+        models.db.session.commit()
+    elif country_name == ca:
+        outdoor_response = "In {}, you should walk in a place called- {}".format(country_name, ca_activity)
+        new_message = models.Activity(ca_activity)
+        models.db.session.add(new_message) 
+        models.db.session.commit()
+    elif country_name == us:
+        outdoor_response = "In the {}, you should check out the activity- {}".format(country_name, us_activity)
+        new_message = models.Activity(us_activity)
+        models.db.session.add(new_message) 
+        models.db.session.commit()
+    else:
+        outdoor_response = "Invalid country input! Please try 'Australia', 'Canada', or 'United States'." 
+
     return(outdoor_response)
 
-def travel_advice(countryCode):
+def travel_advice(country_code):
     url = "https://www.reisewarnung.net/api"
     Response = requests.get(url)
     json_body = Response.json()
-    country_name = json_body["data"][str(countryCode)]["lang"]["de"]["country"]
-    danger_rating = json_body["data"][str(countryCode)]["situation"]["rating"]
-    advice = json_body["data"][str(countryCode)]["lang"]["en"]["advice"]
+    country_name = json_body["data"][str(country_code)]["lang"]["de"]["country"]
+    danger_rating = json_body["data"][str(country_code)]["situation"]["rating"]
+    advice = json_body["data"][str(country_code)]["lang"]["en"]["advice"]
     if country_name:
         response = "For {}, since the travel danger rating is {}/5.0, {}".format(country_name, danger_rating, advice)
     else:

@@ -25,13 +25,13 @@ class Chatbot():
         if message == '!! help':
             response = 'Please select one of the following: !! about, !! Jamaica, !! Puerto Rico, !! Exit, !! Current Weather, !! more help'
         elif message == '!! more help':
-            response = 'Please select one of the following: !! PR-Travel, !! PR-Music, !! PR-Activity, !! Jamaica-airports, !! translate'
+            response = 'Please select one of the following: !! <country code>-Travel, !! PR-Music, !! Activity-<country name>, !! Jamaica-airports, !! translate'
         elif message == '!! say something':
             response = "Hello, I'm a travel bot! For more help, try typing !! help"
         elif message == '!! music':
             response = "Please select one of the following: !! Jamaican-Music, !! PR-Music, !! Jamaica-currency, !! PR-airport"
         elif message == '!! new commands':
-            response = "Please select one: !! PR-airport, !! PR-Activity, !! PR-currency, !! translate, !! <country code>-Travel"
+            response = "Please select one: !! PR-airport, !! Activity-<country name>, !! PR-currency, !! translate, !! <country code>-Travel"
         elif message == "!! about":
             response = "The purpose of this chatbot is inform you of random fun facts regarding specific travel locations!"
         elif message == '!! Jamaica':
@@ -56,8 +56,10 @@ class Chatbot():
             response = currency_conversion()
         elif message == '!! PR-currency':
             response = "Puerto Rico uses the US Dollar as its currency."
-        elif message == '!! PR-Activity':
-            response = outdoor_activity()
+        elif message == '!! Activity-{}'.format(message[12:]):
+            response = "something"
+            country_name = '{}'.format(message[12:])
+            response = outdoor_activity(country_name)
         elif message == '!! translate':
             response = translate()
         elif message == '!! {}-Travel'.format(str(message[3:5])):
