@@ -8,8 +8,7 @@ from destination_api import current_temperature
 from destination_api import current_timezone
 from destination_api import music_from_jamaica
 from destination_api import music_from_pr
-from destination_api import jamaica_airport
-from destination_api import pr_airport
+from destination_api import airport
 from destination_api import currency_conversion
 from destination_api import outdoor_activity
 from destination_api import translate
@@ -48,10 +47,9 @@ class Chatbot():
             response = music_from_jamaica()
         elif message == '!! PR-Music':
             response = music_from_pr()
-        elif message == '!! Jamaica-airport':
-            response = jamaica_airport()
-        elif message == '!! PR-airport':
-            response = pr_airport()
+        elif message == '!! Airport-{}'.format(message[11:]):
+            city = '{}'.format(message[11:])
+            response = airport(city)
         elif message == '!! Jamaica-currency':
             response = currency_conversion()
         elif message == '!! PR-currency':
