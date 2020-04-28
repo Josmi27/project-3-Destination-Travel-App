@@ -41,7 +41,7 @@ export class Chat extends React.Component {
             'Username': this.state.username,
             'Message': this.state.message
         });
-        
+        // messages empty after submit
         this.setState({message: ''});
         console.log('Sent a messages to server!');
         
