@@ -22,7 +22,6 @@ class Chatbot():
 
     def response(self, message):
         
-        
         if message == '!! help':
             response = 'Please select one of the following: !! about, !! Jamaica, !! Puerto Rico, !! Exit, !! Current Weather, !! more help'
         elif message == '!! more help':
@@ -32,7 +31,7 @@ class Chatbot():
         elif message == '!! music':
             response = "Please select one of the following: !! Jamaican-Music, !! PR-Music, !! Jamaica-currency, !! PR-airport"
         elif message == '!! new commands':
-            response = "Please select one: !! PR-airport, !! PR-Activity, !! PR-currency, !! translate, !! PR-Travel "
+            response = "Please select one: !! PR-airport, !! PR-Activity, !! PR-currency, !! translate, !! <country code>-Travel"
         elif message == "!! about":
             response = "The purpose of this chatbot is inform you of random fun facts regarding specific travel locations!"
         elif message == '!! Jamaica':
@@ -61,7 +60,9 @@ class Chatbot():
             response = outdoor_activity()
         elif message == '!! translate':
             response = translate()
-        elif message == '!! PR-Travel':
-            response = travel_advice()
+        elif message == '!! {}-Travel'.format(str(message[3:5])):
+            response = "something"
+            user_input = '{}'.format(message[3:5]).upper()
+            response = travel_advice(user_input)
 
-        return response
+        return(response)

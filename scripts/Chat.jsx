@@ -56,9 +56,6 @@ export class Chat extends React.Component {
 
     render() {
         return (
-            
-            <form>
-            <div>
                 <form onSubmit={this.handleSubmit}>
                     <div className= "input-group">
                          <input type="text" className="form-control" placeholder= "Enter Username" value= {this.state.username} 
@@ -67,8 +64,6 @@ export class Chat extends React.Component {
                                     onChange= {this.handleMessageChange}/>
                     </div>
                 <input type="submit" value="Submit" />
-            </form>
-            </div>
             </form>
         );
     }
