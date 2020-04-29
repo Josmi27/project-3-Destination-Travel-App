@@ -5,6 +5,13 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
+        &#123;% block body %&#125;
+        Sign in with twitter.
+
+        <a href="&#123; &#123; url_for('login') &#125;&#125;"><img src="&#123; &#123;
+        url_for('static', filename='sign-in.png') &#125;&#125; alt="sign in"></a>
+&#123;% endif %&#125;
+&#123;% endblock %&#125;
         <div id="content"></div>
         <script type="text/javascript" src="/static/script.js"></script>
     </body>
