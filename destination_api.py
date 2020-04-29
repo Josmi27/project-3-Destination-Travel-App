@@ -74,7 +74,7 @@ def airport(city):
     airport_code = json.dumps(json_body[0]["code"])
     airport = "The airport located in {} can be found under airport code {} ".format(str(city),airport_code )
     
-    new_message = models.Currency(airport_code)
+    new_message = models.Currency(airport)
     models.db.session.add(new_message) 
     models.db.session.commit()
     return(airport)
