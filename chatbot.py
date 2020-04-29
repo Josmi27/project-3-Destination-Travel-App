@@ -24,13 +24,13 @@ class Chatbot():
         if message == '!! help':
             response = 'Please select one of the following: !! about, !! Jamaica, !! Puerto Rico, !! Exit, !! Current Weather, !! more help'
         elif message == '!! more help':
-            response = 'Please select one of the following: !! <country code>-Travel, !! PR-Music, !! Activity-<country name>, !! Jamaica-airports, !! translate'
+            response = 'Please select one of the following: !! <country code>-Travel, !! music, !! Activity-<country name>, !! text, !! translate'
         elif message == '!! say something':
             response = "Hello, I'm a travel bot! For more help, try typing !! help"
         elif message == '!! music':
             response = "Please select one of the following: !! Jamaican-Music, !! PR-Music, !! Jamaica-currency, !! PR-airport"
         elif message == '!! new commands':
-            response = "Please select one: !! PR-airport, !! Activity-<country name>, !! PR-currency, !! translate, !! text, !! <country code>-Travel"
+            response = "Please select one: !! <country code>-Travel, !! music, !! Activity-<country name>, !! text, !! translate"
         elif message == "!! about":
             response = "The purpose of this chatbot is inform you of random fun facts regarding specific travel locations!"
         elif message == '!! Jamaica':

@@ -66,7 +66,7 @@ def translate():
     json_body2 = response2.json()
     reverse_translation = json_body2["responseData"]["translatedText"]
     translated_sentence = ('"' + reverse_translation +'"' + " translated into Spanish is: "+ original_translation)
-    print(translated_sentence)
+    return(translated_sentence)
     
 #Airport API
 def airport(city): 
