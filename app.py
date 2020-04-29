@@ -9,12 +9,17 @@ from urllib.parse import urlparse
 app = flask.Flask(__name__)
 socketio = flask_socketio.SocketIO(app)
 
+
 import models
 
 @app.route('/')
 def hello():
- 
     return flask.render_template('index.html')
+
+@app.route('/about')
+def intro():
+    return flask.render_template('about.html')
+
 
 @socketio.on('connect') 
 def on_connect():
