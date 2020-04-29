@@ -13,7 +13,7 @@ from destination_api import currency_conversion
 from destination_api import outdoor_activity
 from destination_api import translate
 from destination_api import travel_advice
-
+from destination_api import twilio_texts
 
 class Chatbot():
     def __init__(self):
@@ -30,7 +30,7 @@ class Chatbot():
         elif message == '!! music':
             response = "Please select one of the following: !! Jamaican-Music, !! PR-Music, !! Jamaica-currency, !! PR-airport"
         elif message == '!! new commands':
-            response = "Please select one: !! PR-airport, !! Activity-<country name>, !! PR-currency, !! translate, !! <country code>-Travel"
+            response = "Please select one: !! PR-airport, !! Activity-<country name>, !! PR-currency, !! translate, !! text, !! <country code>-Travel"
         elif message == "!! about":
             response = "The purpose of this chatbot is inform you of random fun facts regarding specific travel locations!"
         elif message == '!! Jamaica':
@@ -39,6 +39,8 @@ class Chatbot():
             response = "Travel Destination Selected: Puerto Rico. Fact: more than 70% of the rum sold in the United States comes from Puerto Rico."
         elif message == '!! Exit':
             response = 'Thank you! More locations and facts available soon!'
+        elif message == '!! text':
+            response = twilio_texts()
         elif message == '!! Current Weather':
             response = current_temperature()
         elif message == '!! timezone':
@@ -64,5 +66,6 @@ class Chatbot():
             response = "something"
             user_input = '{}'.format(message[3:5]).upper()
             response = travel_advice(user_input)
+        
 
         return(response)

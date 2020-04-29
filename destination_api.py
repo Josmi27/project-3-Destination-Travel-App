@@ -21,7 +21,7 @@ def current_timezone():
     local_timezone = ("Your current city of " + city + " is in the " + timezone + " timezone.")
     return(local_timezone)
 
-#genius music api
+# #genius music api
 def music_from_jamaica():
     genius_search_jamaica = "https://api.genius.com/search?q=Sean%20Paul"
     my_headers = {"Authorization": "Bearer lEohxFMUgWxUa1e0TdNhdA79QSdKgPdW8qZ9RHGzbHThB-sDc8H-yEgsV9NkPPRi"}
@@ -31,6 +31,15 @@ def music_from_jamaica():
     song = json_body["response"]["hits"][playlist]["result"]["full_title"]
     Jamaica_song_selection = ("Here you can find a song from/featuring a local Jamaican artist. Song:  " + song)
     return(Jamaica_song_selection)
+
+def twilio_texts():
+
+    from twilio.rest import Client
+
+    account = "ACa99da7102788c03d8a35b515d359b38d"
+    token = "51eb7da1e3031f643892d78ea89a391a"
+    client = Client(account, token)
+    message = client.messages.create(to="+13017528277", from_="+14792551230",body="It's Destination Travel App saying HELLO!")
 
 def music_from_pr():
     genius_search_pr = "https://api.genius.com/search?q=Bad%20Bunny"
@@ -45,7 +54,7 @@ def music_from_pr():
     models.db.session.commit()
     return(pr_song_selection)
     
-#My Memory API - text translator 
+# #My Memory API - text translator 
 def translate():
     api_url = "https://api.mymemory.translated.net/get?q=Hello! Welcome to Destination Travel!&langpair=en|es"
     response = requests.get(api_url)
@@ -55,9 +64,9 @@ def translate():
     response2 = requests.get(api_url2)
     json_body2 = response2.json()
     reverse_translation = json_body2["responseData"]["translatedText"]
-    translated_sentence = (reverse_translation + " translated into Spanish is: "+ original_translation)
-    return(translated_sentence)
-
+    translated_sentence = ('"' + reverse_translation +'"' + " translated into Spanish is: "+ original_translation)
+    print(translated_sentence)
+    
 #Airport API
 def airport(city): 
     url = "https://cometari-airportsfinder-v1.p.rapidapi.com/api/airports/by-text"
@@ -81,7 +90,7 @@ def airport(city):
 
 
 
-#JAMAICA CURRENCY CONVERSION
+# #JAMAICA CURRENCY CONVERSION
 
 def currency_conversion():
     currency_url = "https://currency-converter5.p.rapidapi.com/currency/convert"
