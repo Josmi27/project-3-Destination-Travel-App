@@ -68,10 +68,10 @@ def translate():
     print(translated_sentence)
     
 #Airport API
-def jamaica_airport(): 
+def airport(city): 
     url = "https://cometari-airportsfinder-v1.p.rapidapi.com/api/airports/by-text"
 
-    querystring = {"text":"Kingston"}
+    querystring = {"text":str(city)}
 
     headers = {
         'x-rapidapi-host': "cometari-airportsfinder-v1.p.rapidapi.com",
@@ -80,34 +80,14 @@ def jamaica_airport():
 
     response = requests.request("GET", url, headers=headers, params=querystring)
     json_body = response.json()
-    jamaica_airport = json.dumps(json_body[0]["code"])
-    airport = ("The airport located in Kingston, Jamaica can be found under airport code " + jamaica_airport)
+    airport_code = json.dumps(json_body[0]["code"])
+    airport = "The airport located in {} can be found under airport code {} ".format(str(city),airport_code )
     
-    new_message = models.Currency(jamaica_airport)
+    new_message = models.Currency(airport_code)
     models.db.session.add(new_message) 
     models.db.session.commit()
     return(airport)
 
-def pr_airport():
-    url = "https://cometari-airportsfinder-v1.p.rapidapi.com/api/airports/by-text"
-
-    querystring = {"text":"Ponce"}
-
-    headers = {
-        'x-rapidapi-host': "cometari-airportsfinder-v1.p.rapidapi.com",
-        'x-rapidapi-key': "e9030cc69cmsh46998fa37a68441p18e133jsne5b9847bff25"
-        }
-
-    response = requests.request("GET", url, headers=headers, params=querystring)
-    json_body = response.json()
-    p_airport = json.dumps(json_body[0]["code"])
-    airport = ("The airport located in San Juan, Puerto Rico can be found under airport code "+ p_airport)
-    
-    new_message = models.Currency(p_airport)
-    models.db.session.add(new_message) 
-    models.db.session.commit()
-    
-    return(airport)
 
 
 # #JAMAICA CURRENCY CONVERSION
