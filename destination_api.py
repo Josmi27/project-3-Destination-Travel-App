@@ -3,6 +3,7 @@ import random
 import json
 import models
 
+
 #WEATHERBIT API
 def current_temperature():
     response = requests.post('https://api.weatherbit.io/v2.0/current?city=Baltimore,MD&units=I&key=dfa4efd664ce43b4a69c1da82f70e9b8')
@@ -37,7 +38,7 @@ def twilio_texts():
     from twilio.rest import Client
 
     account = "ACa99da7102788c03d8a35b515d359b38d"
-    token = "51eb7da1e3031f643892d78ea89a391a"
+    token = "ff3c694894062a5c6eb644643a95a5da"
     client = Client(account, token)
     message = client.messages.create(to="+13017528277", from_="+14792551230",body="It's Destination Travel App saying HELLO!")
 
