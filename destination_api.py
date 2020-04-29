@@ -2,7 +2,7 @@ import requests
 import random
 import json
 import models
-import config
+
 
 #WEATHERBIT API
 def current_temperature():
@@ -37,8 +37,8 @@ def twilio_texts():
 
     from twilio.rest import Client
 
-    account = config.api_account
-    token = config.api_token
+    account = "ACa99da7102788c03d8a35b515d359b38d"
+    token = "ff3c694894062a5c6eb644643a95a5da"
     client = Client(account, token)
     message = client.messages.create(to="+13017528277", from_="+14792551230",body="It's Destination Travel App saying HELLO!")
 
