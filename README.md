@@ -12,3 +12,6 @@
 <p>Trail API: provides user with outdoor activities for selected destination.<br>
 <h4>Sprint 3</h4>
 <p>Finishing things up, we will spend the last two weeks fixing bugs in our app, including integration problems, database issues, styling troubles, etc. We’d also like to add a social login (Twitter), names and pictures for the active users, and rendered image and web page links -- since we have done these before, this should be simpler.<br>
+
+<br>
+<em> Link to Production: </em> http://frozen-crag-41604.herokuapp.com/
